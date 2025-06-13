@@ -296,7 +296,7 @@ public partial class MainWindow : Avalonia.Controls.Window
         if (!Directory.Exists(outputDirPath)) Directory.CreateDirectory(outputDirPath);
         Cv2.ImWrite(outputFilePath, dst);
         
-        AddLogItem($"【降采样】成功：{fileName}; {src.Size()} -> {size}", LogType.Info);
+        AddLogItem($"【降采样】成功：{fileName}; {src.Size()} -> {{Width = {newWidth},Height = {newHeight}}}", LogType.Info);
     }
     private void DownSample()
     {
