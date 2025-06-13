@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+        x:Class="DingTextureTool.MainWindow"
+        Title="图片工具" Width="800" Height="800">
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="160,*,Auto">
+        
+        <Image Grid.ColumnSpan="3" Name="TeamLogoImg" Width="300" Height="150" Margin="10" />
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="图片：" VerticalAlignment="Center" FontSize="15" Margin="10"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="TexturePathText" VerticalAlignment="Center" FontSize="15" Margin="5" TextChanged="OnTexturePathChanged"/>
+        <Button Grid.Row="1" Grid.Column="2" Content="..." Margin="10" Click="OnTextureSelectBtn"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="文件夹：" VerticalAlignment="Center" FontSize="15" Margin="10"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="FolderPathText" VerticalAlignment="Center" FontSize="15" Margin="5" TextChanged="OnTextureFolderPathChanged"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="..." Margin="10" Click="OnTextureFolderSelectBtn"/>
+        
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="导出文件夹：" VerticalAlignment="Center" FontSize="15" Margin="10"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="OutPutFolderPathText" VerticalAlignment="Center" FontSize="15" Margin="5" TextChanged="OnOutputPathChanged"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="..." Margin="10" Click="OnOutputFolderBtn"/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="水印位置（%）：" Name="WatermarkLabel" VerticalAlignment="Center" FontSize="15" Margin="10"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Name="WatermarkRect" Orientation="Horizontal" Margin="5">
+            <TextBlock Text="x" VerticalAlignment="Center" FontSize="15"/>
+            <TextBox Name="WaterMarkXText" VerticalAlignment="Center" FontSize="15" TextChanged="OnWatermarkXChanged"/>
+            <TextBlock Text="y" VerticalAlignment="Center" FontSize="15"/>
+            <TextBox Name="WaterMarkYText" VerticalAlignment="Center" FontSize="15" TextChanged="OnWatermarkYChanged"/>
+            <TextBlock Text="w" VerticalAlignment="Center" FontSize="15"/>
+            <TextBox Name="WaterMarkWidthText" VerticalAlignment="Center" FontSize="15" TextChanged="OnWatermarkWidthChanged"/>
+            <TextBlock Text="h" VerticalAlignment="Center" FontSize="15"/>
+            <TextBox Name="WaterMarkHeightText" VerticalAlignment="Center" FontSize="15" TextChanged="OnWatermarkHeightChanged"/>
+        </StackPanel>
+        
+        <TextBlock Grid.Row="5" Grid.Column="0" Name="DownSampleLabel" Text="降采样最大边尺寸：" VerticalAlignment="Center" FontSize="15" Margin="10"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Name="MaxSizeText" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="15" Margin="5" TextChanged="OnDownSampleSizeChanged"/>
+
+        <Grid ColumnDefinitions="*,*" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="10">
+            <ComboBox Grid.Column="0" Name="ExecuteBox" HorizontalAlignment="Right" Width="100" Margin="5,0" SelectionChanged="OnExecuteTypeChanged">
+                <ComboBoxItem IsSelected="True" Content="降采样"/>
+            </ComboBox>
+            <Button Grid.Column="1" Content="执行" Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="5,0" Click="OnExcuteBtn"/>
+        </Grid>
+        
+        <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10">
+            <HyperlinkButton Content="github地址" FontSize="15" VerticalContentAlignment="Bottom" NavigateUri="todo:..."/>
+        </TextBlock>
+        
+        <ListBox Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Name="LogListBox" Margin="10">
+            <ListBoxItem>Log 1</ListBoxItem>
+            <ListBoxItem>Log 2</ListBoxItem>
+            <ListBoxItem>Log 3</ListBoxItem>
+            <ListBoxItem>Log 4</ListBoxItem>
+            <ListBoxItem>Log 5</ListBoxItem>
+        </ListBox>
+    </Grid>
+</Window>
